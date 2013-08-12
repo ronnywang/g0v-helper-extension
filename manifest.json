@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+
+  "name": "g0v小幫手",
+  "description": "看看gov網站是否已經有人g0v過..",
+  "version": "1.0.2",
+
+  "background" : {
+      "scripts": ["background.js"]
+  },
+  "permissions": [
+      "http://helper.g0v.ronny.tw/",
+      "http://*.gov.tw/",
+      "https://*.gov.tw/",
+      "tabs",
+      "storage"
+  ],
+  "page_action" : {
+      "default_icon" : "icon-19.png",
+      "default_title" : "設定g0v小幫手",
+      "default_popup" : "popup.html"
+  },
+  "content_scripts" : [
+    {
+      "matches" : [
+	"http://*.gov.tw/*",
+        "https://*.gov.tw/*"
+      ],
+      "js" : ["jquery.min.js", "common.js", "contentscript.js"],
+      "run_at" : "document_idle",
+      "all_frames" : false
+    }
+  ],
+  "icons" : {
+    "48" : "sandwich-48.png",
+    "128" : "sandwich-128.png"
+  }
+}
